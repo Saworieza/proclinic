@@ -926,6 +926,8 @@ h4.wiget-title {
 .card,
 .card-img-top {
 	border-radius: 0px;
+	height: 230px;
+    border-bottom: thin solid silver;
 }
 .card-area{
 	border-radius: 5px;
@@ -1014,7 +1016,7 @@ h4.wiget-title {
 ====================== */
 
 .btn {
-	margin-bottom: 5px;	
+	margin-bottom: 5px;
 	font-size: 15px;
     letter-spacing: 1px;
 }
@@ -1026,7 +1028,7 @@ h4.wiget-title {
     font-size: 22px;
     padding-bottom: .5rem;
     margin-bottom: 10px;
-    border-bottom: 1px solid #eeeeee; 
+    border-bottom: 1px solid #eeeeee;
 }
 button:focus {
     outline: none;
@@ -1214,7 +1216,7 @@ form .form-group label{
 	font-size: 15px;
 	padding: 5px;
 	cursor: pointer;
-} 
+}
 
 
 /*=======================
