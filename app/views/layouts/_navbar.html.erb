@@ -21,8 +21,15 @@
 		<ul class="navbar-nav mr-auto">
 			<% if user_signed_in? %>
 				<li class="nav-item dropdown active"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="/" role="button" aria-haspopup="true" aria-expanded="false"><span class="ti-home"></span> Dashboard</a> </li>
-				<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="index.html#" role="button" aria-haspopup="true" aria-expanded="false"><span class="ti-wheelchair"></span> Patients</a>
-					<div class="dropdown-menu"> <a class="dropdown-item" href="add-patient.html">Add Patient</a> <a class="dropdown-item" href="patients.html">All Patients</a> <a class="dropdown-item" href="about-patient.html">Patient Details</a> <a class="dropdown-item" href="edit-patient.html">Edit Patient</a> </div>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="<%= patients_path %>" role="button" aria-haspopup="true" aria-expanded="false">
+						<span class="ti-wheelchair"></span>
+						Patients
+					</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="<%= patients_path %>">All Patients</a>
+						<a class="dropdown-item" href="<%= new_patient_path %>">Add Patient</a>
+					</div>
 				</li>
 				<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="index.html#" role="button" aria-haspopup="true" aria-expanded="false"><span class="ti-user"></span> Doctors</a>
 					<div class="dropdown-menu"> <a class="dropdown-item" href="add-doctor.html">Add Doctor</a> <a class="dropdown-item" href="doctors.html">All Doctors</a> <a class="dropdown-item" href="about-doctor.html">Doctor Details</a> <a class="dropdown-item" href="edit-doctor.html">Edit Doctor</a> </div>
