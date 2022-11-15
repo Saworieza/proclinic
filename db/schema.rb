@@ -10,7 +10,72 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20221115083231) do
+ActiveRecord::Schema.define(version: 20221115121219) do
+
+  create_table "appointments", force: :cascade do |t|
+    t.integer  "patient_id"
+    t.integer  "doctor_id"
+    t.integer  "department_id"
+    t.date     "date"
+    t.string   "timeSlot"
+    t.integer  "token"
+    t.text     "problem"
+    t.boolean  "diagnosed"
+    t.integer  "user_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["department_id"], name: "index_appointments_on_department_id"
+    t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
+    t.index ["patient_id"], name: "index_appointments_on_patient_id"
+    t.index ["user_id"], name: "index_appointments_on_user_id"
+  end
+
+  create_table "departments", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "doctor_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["doctor_id"], name: "index_departments_on_doctor_id"
+    t.index ["user_id"], name: "index_departments_on_user_id"
+  end
+
+  create_table "diagnoses", force: :cascade do |t|
+    t.integer  "appointment_id"
+    t.string   "disease"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["appointment_id"], name: "index_diagnoses_on_appointment_id"
+  end
+
+  create_table "doctors", force: :cascade do |t|
+    t.string   "surname"
+    t.string   "othernames"
+    t.date     "dob"
+    t.string   "specialization"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "gender"
+    t.text     "details"
+    t.text     "address"
+    t.integer  "user_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["user_id"], name: "index_doctors_on_user_id"
+  end
+
+  create_table "kins", force: :cascade do |t|
+    t.string   "surname"
+    t.string   "othernames"
+    t.string   "phone"
+    t.string   "idNo"
+    t.integer  "patient_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["patient_id"], name: "index_kins_on_patient_id"
+    t.index ["user_id"], name: "index_kins_on_user_id"
+  end
 
   create_table "patients", force: :cascade do |t|
     t.string   "surname"
@@ -24,6 +89,18 @@ ActiveRecord::Schema.define(version: 20221115083231) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_patients_on_user_id"
+  end
+
+  create_table "prescriptions", force: :cascade do |t|
+    t.string   "drug"
+    t.string   "quantity"
+    t.string   "duration"
+    t.integer  "diagnosis_id"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["diagnosis_id"], name: "index_prescriptions_on_diagnosis_id"
+    t.index ["user_id"], name: "index_prescriptions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Patient:</strong>
+  <%= @appointment.patient %>
+</p>
+
+<p>
+  <strong>Doctor:</strong>
+  <%= @appointment.doctor %>
+</p>
+
+<p>
+  <strong>Department:</strong>
+  <%= @appointment.department %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @appointment.date.strftime("%B %d, %Y") %>
+  <%= @appointment.date %>
+</p>
+
+<p>
+  <strong>Timeslot:</strong>
+  <%= @appointment.timeSlot %>
+</p>
+
+<p>
+  <strong>Token:</strong>
+  <%= @appointment.token %>
+</p>
+
+<p>
+  <strong>Problem:</strong>
+  <%= @appointment.problem %>
+</p>
+
+<p>
+  <strong>Diagnosed:</strong>
+  <%= @appointment.diagnosed %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @appointment.user %>
+</p>
+
+<%= link_to 'Edit', edit_appointment_path(@appointment) %> |
+<%= link_to 'Back', appointments_path %>

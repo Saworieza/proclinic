@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  drug: MyString
+  quantity: MyString
+  duration: MyString
+  diagnosis: one
+  user: one
+
+two:
+  drug: MyString
+  quantity: MyString
+  duration: MyString
+  diagnosis: two
+  user: two

@@ -33,6 +33,12 @@
                 <td><strong>Id Number</strong></td>
                 <td><%= @patient.idNo %></td>
               </tr>
+              <% @patient.kins.each do |kin| %>
+              <tr>
+                <td><strong>Next of Kin </strong></td>
+                <td><%= kin.surname %> <%= kin.othernames %></td>
+              </tr>
+              <% end %>
             </tbody>
           </table>
         </div>

@@ -1,0 +1,38 @@
+<%= form_for(diagnosis) do |f| %>
+  <% if diagnosis.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(diagnosis.errors.count, "error") %> prohibited this diagnosis from being saved:</h2>
+
+      <ul>
+      <% diagnosis.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :appointment_id %>
+    <%= f.text_field :appointment_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :disease %>
+    <%= f.text_field :disease %>
+  </div>
+
+  <h5>Next Of Kin</h5>
+  <div id="kins">
+      <%= f.fields_for :prescriptions do |prescription| %>
+        <%= render 'prescription_fields', f: prescription %>
+      <% end %>
+      <span class='links'>
+        <%= link_to_add_association 'Add Prescription', f, :prescriptions %>
+      </span>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
