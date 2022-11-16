@@ -1,45 +1,41 @@
-<p id="notice"><%= notice %></p>
+<%= render 'doctors/common' %>
 
-<h1>Doctors</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Surname</th>
-      <th>Othernames</th>
-      <th>Dob</th>
-      <th>Specialization</th>
-      <th>Phone</th>
-      <th>Email</th>
-      <th>Gender</th>
-      <th>Details</th>
-      <th>Address</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @doctors.each do |doctor| %>
-      <tr>
-        <td><%= doctor.surname %></td>
-        <td><%= doctor.othernames %></td>
-        <td><%= doctor.dob %></td>
-        <td><%= doctor.specialization %></td>
-        <td><%= doctor.phone %></td>
-        <td><%= doctor.email %></td>
-        <td><%= doctor.gender %></td>
-        <td><%= doctor.details %></td>
-        <td><%= doctor.address %></td>
-        <td><%= doctor.user %></td>
-        <td><%= link_to 'Show', doctor %></td>
-        <td><%= link_to 'Edit', edit_doctor_path(doctor) %></td>
-        <td><%= link_to 'Destroy', doctor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Doctor', new_doctor_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="widget-area-2 proclinic-box-shadow">
+        <h3 class="widget-title">Doctors List</h3>
+        <div class="table-responsive mb-3">
+          <table id="tableId" class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Date of Birth </th>
+                <th>Specialization</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Details</th>
+                <th>Address</th>
+              </tr>
+            </thead>
+            <tbody>
+            <% @doctors.each do |doctor| %>
+              <tr>
+                <td><%= link_to doctor.surname, doctor %> <%= link_to doctor.othernames, doctor %></td>
+                <td><%= doctor.dob %></td>
+                <td><%= doctor.specialization %></td>
+                <td><%= doctor.phone %></td>
+                <td><%= doctor.email %></td>
+                <td><%= doctor.gender %></td>
+                <td><%= doctor.details.truncate(15) %></td>
+                <td><%= doctor.address %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

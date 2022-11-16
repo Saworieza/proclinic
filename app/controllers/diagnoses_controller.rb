@@ -23,7 +23,7 @@ class DiagnosesController < ApplicationController
   # POST /diagnoses or /diagnoses.json
   def create
     @diagnosis = Diagnosis.new(diagnosis_params)
-    @diagnoses.user = current_user
+    @diagnosis.user = current_user
 
     respond_to do |format|
       if @diagnosis.save
@@ -67,6 +67,6 @@ class DiagnosesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def diagnosis_params
-      params.require(:diagnosis).permit(:appointment_id, :disease, prescriptions_attributes: [:id, :drug, :quantity, :duration, :_destroy])
+      params.require(:diagnosis).permit(:appointment_id, :disease, :user_id, prescriptions_attributes: [:id, :drug, :quantity, :duration, :_destroy])
     end
 end

@@ -7,12 +7,7 @@
 
 <p>
   <strong>Doctor:</strong>
-  <%= @department.doctor %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @department.user %>
+  <%= @department.doctor.surname %> <%= @department.doctor.othernames %>
 </p>
 
 <%= link_to 'Edit', edit_department_path(@department) %> |

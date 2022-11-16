@@ -1,14 +1,75 @@
+<%= render 'diagnoses/common' %>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Appointment:</strong>
-  <%= @diagnosis.appointment %>
-</p>
+<div class="container">
+  <div class="row">
+    <!-- Widget Item -->
+    <div class="col-md-6">
+      <div class="widget-area-2 proclinic-box-shadow">
+        <h3 class="widget-title">Patient Details</h3>
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <td><strong>Appointment ID</strong></td>
+                <td>CASE/<%= @diagnosis.appointment.id %>/<%= Time.now.strftime("%Y") %></td>
+              </tr>
+              <tr>
+                <td><strong>Doctor</strong></td>
+                <td>Dr. <%= @diagnosis.appointment.doctor.surname %> <%= @diagnosis.appointment.doctor.othernames %></td>
+              </tr>
+              <tr>
+                <td><strong>Patient</strong> </td>
+                <td><%= @diagnosis.appointment.patient.surname %> <%= @diagnosis.appointment.patient.othernames %></td>
+              </tr>
+              <tr>
+                <td><strong>Patient Age</strong> </td>
+                <td><%= @diagnosis.appointment.patient.age %></td>
+              </tr>
+              <tr>
+                <td><strong>Problem</strong> </td>
+                <td><%= @diagnosis.appointment.problem %> <%= @diagnosis.appointment.patient.othernames %></td>
+              </tr>
 
-<p>
-  <strong>Disease:</strong>
-  <%= @diagnosis.disease %>
-</p>
+            </tbody>
+          </table>
+        </div>
 
-<%= link_to 'Edit', edit_diagnosis_path(@diagnosis) %> |
-<%= link_to 'Back', diagnoses_path %>
+        <%= link_to edit_diagnosis_path(@diagnosis), class: "btn btn-success mb-3" do %>
+          <span class="ti-pencil-alt"></span>
+          Edit Diagnosis
+        <% end %>
+
+        <%= link_to @patient, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger mb-3" do %>
+          <span class="ti-trash"></span>
+          Delete Diagnosis
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="widget-area-2 proclinic-box-shadow">
+        <h3 class="widget-title">Drug Prescription</h3>
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Assigned Drug</th>
+                <th>Qunatity</th>
+                <th>Duration</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @diagnosis.prescriptions.each do |prescription| %>
+              <tr>
+                <td><%= prescription.drug %></td>
+                <td><%= prescription.quantity %> </td>
+                <td><%= prescription.duration %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    </div>

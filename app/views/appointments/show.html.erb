@@ -1,50 +1,60 @@
+<%= render 'appointments/common' %>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Patient:</strong>
-  <%= @appointment.patient %>
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="widget-area-2 proclinic-box-shadow">
+        <h3 class="widget-title">Appointment Details</h3>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+              <tbody>
+                <tr>
+                    <td><strong>Patient ID</strong></td>
+                    <td>PT / <%= @appointment.patient.id %> / <%= Time.now.strftime("%Y") %></td>
+                </tr>
+                <tr>
+                    <td><strong>Department</strong></td>
+                    <td><%= @appointment.patient.surname %> <%= @appointment.patient.othernames %></td>
+                </tr>
+                <tr>
+                    <td><strong>Doctor Name</strong></td>
+                    <td>Dr. <%= @appointment.doctor.surname %><%= @appointment.doctor.othernames %></td>
+                </tr>
+                <tr>
+                    <td><strong>Appointment Date</strong></td>
+                    <td><%= @appointment.date.strftime("%B %d, %Y") %></td>
+                </tr>
+                <tr>
+                    <td><strong>Time Slot </strong></td>
+                    <td><%= @appointment.timeSlot %></td>
+                </tr>
+                <tr>
+                    <td><strong>Token Number </strong></td>
+                    <td> <%= @appointment.token %></td>
+                </tr>
+                <tr>
+                    <td><strong>Problem</strong></td>
+                    <td><%= @appointment.problem %></td>
+                </tr>
+                <tr>
+                    <td><strong>Diagnosed</strong></td>
+                    <td><%= @appointment.diagnosed %></td>
+                </tr>
+              </tbody>
+            </table>
+            <%= link_to edit_appointment_path(@appointment), class: "btn btn-success mb-3" do %>
+              <span class="ti-pencil-alt"></span>
+              Edit Appointment
+            <% end %>
 
-<p>
-  <strong>Doctor:</strong>
-  <%= @appointment.doctor %>
-</p>
-
-<p>
-  <strong>Department:</strong>
-  <%= @appointment.department %>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <%= @appointment.date.strftime("%B %d, %Y") %>
-  <%= @appointment.date %>
-</p>
-
-<p>
-  <strong>Timeslot:</strong>
-  <%= @appointment.timeSlot %>
-</p>
-
-<p>
-  <strong>Token:</strong>
-  <%= @appointment.token %>
-</p>
-
-<p>
-  <strong>Problem:</strong>
-  <%= @appointment.problem %>
-</p>
-
-<p>
-  <strong>Diagnosed:</strong>
-  <%= @appointment.diagnosed %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @appointment.user %>
-</p>
-
-<%= link_to 'Edit', edit_appointment_path(@appointment) %> |
-<%= link_to 'Back', appointments_path %>
+            <%= link_to @appointment, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger mb-3" do %>
+              <span class="ti-trash"></span>
+              Delete Appointment
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

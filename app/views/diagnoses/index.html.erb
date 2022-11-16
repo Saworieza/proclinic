@@ -1,29 +1,36 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Diagnoses</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="widget-area-2 proclinic-box-shadow">
+        <h3 class="widget-title">Diagnoses List</h3>
+        <div class="table-responsive mb-3">
+          <table id="tableId" class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Appointment</th>
+                <th>Disease</th>
+                <th>Date</th>
+                <th>Patient ID</th>
+                <th colspan="1"></th>
+              </tr>
+            </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Appointment</th>
-      <th>Disease</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @diagnoses.each do |diagnosis| %>
-      <tr>
-        <td><%= diagnosis.appointment %></td>
-        <td><%= diagnosis.disease %></td>
-        <td><%= link_to 'Show', diagnosis %></td>
-        <td><%= link_to 'Edit', edit_diagnosis_path(diagnosis) %></td>
-        <td><%= link_to 'Destroy', diagnosis, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Diagnosis', new_diagnosis_path %>
+            <tbody>
+              <% @diagnoses.each do |diagnosis| %>
+                <tr>
+                  <td>CASE/<%= diagnosis.appointment.id %>/<%= Time.now.strftime("%Y") %></td>
+                  <td><%= diagnosis.disease %></td>
+                  <td><%= diagnosis.created_at.strftime('%B %d, %Y')%></td>
+                  <td>PT / <%= diagnosis.appointment.patient.id %> / <%= Time.now.strftime("%Y") %></td>
+                  <td><%= link_to 'Show', diagnosis %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

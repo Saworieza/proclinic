@@ -18,12 +18,7 @@
 
   <div class="field">
     <%= f.label :doctor_id %>
-    <%= f.text_field :doctor_id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :user_id %>
-    <%= f.text_field :user_id %>
+    <%= f.collection_select :doctor, Doctor.all, :id, :surname %>
   </div>
 
   <div class="actions">

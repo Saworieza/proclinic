@@ -41,14 +41,51 @@
 						<a class="dropdown-item" href="<%= new_doctor_path %>">Add Doctor</a>
 					</div>
 				</li>
-				<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="index.html#" role="button" aria-haspopup="true" aria-expanded="false"><span class="ti-pencil-alt"></span> Appointments</a>
-					<div class="dropdown-menu"> <a class="dropdown-item" href="add-appointment.html">Add Appointment</a> <a class="dropdown-item" href="appointments.html">All Appointments</a> <a class="dropdown-item" href="about-appointment.html">Appointment Details</a> <a class="dropdown-item" href="edit-appointment.html">Edit Appointment</a> </div>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="<%= appointments_path %>" role="button" aria-haspopup="true" aria-expanded="false">
+						<span class="ti-pencil-alt"></span>
+						Appointments
+					</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="<%= appointments_path %>">All Appointments</a>
+						<a class="dropdown-item" href="<%= new_appointment_path %>">Add Appointment</a>
+					</div>
 				</li>
-				<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="index.html#" role="button" aria-haspopup="true" aria-expanded="false"><span class="ti-key"></span> Room Allotments</a>
-					<div class="dropdown-menu"> <a class="dropdown-item" href="add-room.html">Add Room Allotment</a> <a class="dropdown-item" href="rooms.html">All Rooms</a> <a class="dropdown-item" href="edit-room.html">Edit Room Allotment</a> </div>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="/diagnoses" role="button" aria-haspopup="true" aria-expanded="false">
+						<span class="ti-money"></span> Diagnoses
+					</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="<%= diagnoses_path %>">Diagnoses</a>
+						<a class="dropdown-item" href="<%= new_diagnosis_path %>">New Diagnosis</a>
+					</div>
 				</li>
-				<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="index.html#" role="button" aria-haspopup="true" aria-expanded="false"><span class="ti-money"></span> Payments</a>
-					<div class="dropdown-menu"> <a class="dropdown-item" href="add-payment.html">Add Payment</a> <a class="dropdown-item" href="payments.html">All Payments</a> <a class="dropdown-item" href="about-payment.html">Payment Invoice</a> </div>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="index.html#" role="button" aria-haspopup="true" aria-expanded="false">
+						<span class="ti-key"></span>Admissions
+					</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="add-room.html">Admission</a>
+						<a class="dropdown-item" href="rooms.html">New Admission</a>
+					</div>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="index.html#" role="button" aria-haspopup="true" aria-expanded="false">
+						<span class="ti-money"></span> Payments
+					</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="add-payment.html">Payments</a>
+						<a class="dropdown-item" href="payments.html">New Payments</a>
+					</div>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="index.html#" role="button" aria-haspopup="true" aria-expanded="false">
+						<span class="ti-money"></span> Department
+					</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="<%= departments_path %>">Departments</a>
+						<a class="dropdown-item" href="<%= new_department_path %>">New Department</a>
+					</div>
 				</li>
 				<li class="nav-item dropdown ms-auto">
 					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="index.html#" role="button" aria-haspopup="true" aria-expanded="false">

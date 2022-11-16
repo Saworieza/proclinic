@@ -54,65 +54,37 @@
         <% end %>
       </div>
     </div>
-              <!-- /Widget Item -->
-              <!-- Widget Item -->
+
     <div class="col-md-6">
       <div class="widget-area-2 proclinic-box-shadow">
-        <h3 class="widget-title">Patient Visits</h3>
+        <h3 class="widget-title"><%= @patient.surname.capitalize %>'s Appointments</h3>
         <div class="table-responsive">
           <table class="table table-bordered table-striped">
             <thead>
               <tr>
                 <th>Doctor Name</th>
-                <th>Cost</th>
                 <th>Visit Date</th>
                 <th>Status</th>
               </tr>
             </thead>
             <tbody>
+              <% @patient.appointments.each do |appointment| %>
               <tr>
-                <td>Manoj Kumar</td>
-                <td>$30</td>
-                <td>12-03-2018</td>
-                <td>Resheduled</td>
+                <td>CASE/<%= appointment.id %>/<%= Time.now.strftime("%Y") %></td>
+                <td>Dr. <%= appointment.doctor.surname %> <%= appointment.doctor.othernames %></td>
+                <td><%= appointment.created_at.strftime('%b %d, %Y') %></td>
+                <td><%= appointment.diagnosed %></td>
               </tr>
-              <tr>
-                <td>Riya </td>
-                <td>$26</td>
-                <td>12-10-2018</td>
-                <td>Operation</td>
-              </tr>
-              <tr>
-                <td>Paul</td>
-                <td>$46</td>
-                <td>45-10-2018</td>
-                <td>Fever</td>
-              </tr>
-              <tr>
-                <td>Manoj Kumar</td>
-                <td>$30</td>
-                <td>12-03-2018</td>
-                <td>Ortho</td>
-              </tr>
-              <tr>
-                <td>Riya </td>
-                <td>26</td>
-                <td>12-10-2018</td>
-                <td>General Check-up</td>
-              </tr>
-              <tr>
-                <td>Paul</td>
-                <td>46</td>
-                <td>45-10-2018</td>
-                <td>Injury</td>
-              </tr>
+              <% end %>
             </tbody>
           </table>
         </div>
       </div>
     </div>
-              <!-- /Widget Item -->
-                <!-- Widget Item -->
+
+
+
+
     <div class="col-md-12">
       <div class="widget-area-2 proclinic-box-shadow">
         <h3 class="widget-title">Patient Payment Transactions</h3>
