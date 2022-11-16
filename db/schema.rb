@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20221115212837) do
+ActiveRecord::Schema.define(version: 20221116114814) do
+
+  create_table "admissions", force: :cascade do |t|
+    t.string   "roomNumber"
+    t.string   "roomType"
+    t.date     "admissionDate"
+    t.date     "dischargeDate"
+    t.integer  "appointment_id"
+    t.integer  "user_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.boolean  "discharged"
+    t.index ["appointment_id"], name: "index_admissions_on_appointment_id"
+    t.index ["user_id"], name: "index_admissions_on_user_id"
+  end
 
   create_table "appointments", force: :cascade do |t|
     t.integer  "patient_id"

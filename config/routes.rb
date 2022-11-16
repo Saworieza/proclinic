@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :admissions
   resources :diagnoses
   resources :appointments
   resources :departments
