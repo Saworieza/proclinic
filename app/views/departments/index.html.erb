@@ -1,31 +1,33 @@
+<%= render 'departments/common' %>
 <p id="notice"><%= notice %></p>
 
-<h1>Departments</h1>
+<!-- note that department has been poorly designed, the doctors should be a nested form  and the relationship is inverted -->
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Doctor</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="widget-area-2 proclinic-box-shadow">
+        <h3 class="widget-title">Diagnoses List</h3>
+        <div class="table-responsive mb-3">
+          <table id="tableId" class="table table-bordered table-striped">
+            <thead>
+              <tr>
+              <th>Department Name</th>
+              <th>Doctor</th>
+              </tr>
+            </thead>
 
-  <tbody>
-    <% @departments.each do |department| %>
-      <tr>
-        <td><%= department.name %></td>
-        <td><%= department.doctor %></td>
-        <td><%= department.user %></td>
-        <td><%= link_to 'Show', department %></td>
-        <td><%= link_to 'Edit', edit_department_path(department) %></td>
-        <td><%= link_to 'Destroy', department, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Department', new_department_path %>
+            <tbody>
+              <% @departments.each do |department| %>
+                <tr>
+                  <td><%= link_to department.name.capitalize, department %></td>
+                  <td>Dr. <%= department.doctor.surname %> <%= department.doctor.othernames %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
