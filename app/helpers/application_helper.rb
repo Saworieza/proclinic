@@ -15,4 +15,31 @@ module ApplicationHelper
     end
     nil
   end
+
+  def humanize_admision(value)
+    case value
+    when true
+      "Discharged"
+    when false
+      "Admitted"
+    when nil
+      "Undefined"
+    else
+      "Invalid"
+    end
+  end
+
+  def humanize_appointment(value)
+    case value
+    when true
+      "Attended"
+    when false
+      "Pending"
+    when nil
+      "Undefined"
+    else
+      "Invalid"
+    end
+  end
+
 end

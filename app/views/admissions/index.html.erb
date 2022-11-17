@@ -28,10 +28,11 @@
                 <td><%= admission.dischargeDate.strftime('%D %b %Y') %></td>
                 <td>Dr. <%= admission.appointment.doctor.surname %> <%= admission.appointment.doctor.othernames %></td>
                 <% if admission.discharged == true %>
-                  <td><span class="badge badge-success"><%= admission.discharged %></span></td>
+                  <td><span class="badge badge-success"><%= humanize_admision(admission.discharged)  %></span></td>
                 <% else %>
-                  <td><span class="badge badge-danger"><%= admission.discharged %></span></td>
+                  <td><span class="badge badge-danger"><%= humanize_admision(admission.discharged) %></span></td>
                 <% end %>
+
                 <td><%= link_to 'Show', admission %></td
               </tr>
             <% end %>

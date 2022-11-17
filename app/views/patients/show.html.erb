@@ -62,8 +62,9 @@
           <table class="table table-bordered table-striped">
             <thead>
               <tr>
-                <th>Doctor Name</th>
-                <th>Visit Date</th>
+                <th>Appointment NO</th>
+                <th>Doctor</th>
+                <th>Date</th>
                 <th>Status</th>
               </tr>
             </thead>
@@ -73,7 +74,11 @@
                 <td>CASE/<%= appointment.id %>/<%= Time.now.strftime("%Y") %></td>
                 <td>Dr. <%= appointment.doctor.surname %> <%= appointment.doctor.othernames %></td>
                 <td><%= appointment.created_at.strftime('%b %d, %Y') %></td>
-                <td><%= appointment.diagnosed %></td>
+                <% if appointment.diagnosed == true %>
+                  <td><span class="badge badge-success"><%= humanize_appointment(appointment.diagnosed)  %></span></td>
+                <% else %>
+                  <td><span class="badge badge-danger"><%= humanize_appointment(appointment.diagnosed) %></span></td>
+                <% end %>
               </tr>
               <% end %>
             </tbody>
