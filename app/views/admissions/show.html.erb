@@ -1,58 +1,29 @@
-<%= render 'admissions/common' %>
 <p id="notice"><%= notice %></p>
-<div class="container">
-  <div class="row">
-    <!-- Widget Item -->
-    <div class="col-md-6">
-      <div class="widget-area-2 proclinic-box-shadow">
-        <h3 class="widget-title">Admission Details</h3>
-        <div class="table-responsive">
-          <table class="table table-bordered">
-            <tbody>
-              <tr>
-                <td><strong>Room Number</strong></td>
-                <td><%= @admission.roomNumber %></td>
-              </tr>
-              <tr>
-                <td><strong>Room Type</strong></td>
-                <td><%= @admission.roomType %></td>
-              </tr>
-              <tr>
-                <td><strong>Patient Name</strong></td>
-                <td><%= @admission.appointment.patient.surname %> <%= @admission.appointment.patient.othernames %></td>
-              </tr>
-              <tr>
-                <td><strong>Admission Date</strong> </td>
-                <td><%= @admission.admissionDate.strftime('%D %b %Y') %></td>
-              </tr>
-              <tr>
-                <td><strong>Discharge Date</strong></td>
-                <td><%= @admission.dischargeDate.strftime('%D %b %Y') %></td>
-              </tr>
-              <tr>
-                <td><strong>Doctor Name</strong></td>
-                <td>Dr. <%= @admission.appointment.doctor.surname %> <%= @admission.appointment.doctor.othernames %></td>
-              </tr>
-              <tr>
-                <td><strong>Discharged</strong></td>
-                <td><%= @admission.discharged %></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
 
-        <%= link_to edit_admission_path(@admission), class: "btn btn-success mb-3" do %>
-          <span class="ti-pencil-alt"></span>
-          Edit Admission
-        <% end %>
+<p>
+  <strong>Ward:</strong>
+  <%= @admission.ward %>
+</p>
 
-        <%= link_to @admission, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger mb-3" do %>
-          <span class="ti-trash"></span>
-          Delete Admission
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
+<p>
+  <strong>Admissiondate:</strong>
+  <%= @admission.admissionDate %>
+</p>
 
+<p>
+  <strong>Dischargedate:</strong>
+  <%= @admission.dischargeDate %>
+</p>
 
+<p>
+  <strong>Appointment:</strong>
+  <%= @admission.appointment %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @admission.user %>
+</p>
+
+<%= link_to 'Edit', edit_admission_path(@admission) %> |
+<%= link_to 'Back', admissions_path %>

@@ -17,7 +17,7 @@ class AdmissionsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create admission" do
     assert_difference('Admission.count') do
-      post admissions_url, params: { admission: { admissionDate: @admission.admissionDate, appointment_id: @admission.appointment_id, dischargeDate: @admission.dischargeDate, roomNumber: @admission.roomNumber, roomType: @admission.roomType, user_id: @admission.user_id } }
+      post admissions_url, params: { admission: { admissionDate: @admission.admissionDate, appointment_id: @admission.appointment_id, dischargeDate: @admission.dischargeDate, user_id: @admission.user_id, ward_id: @admission.ward_id } }
     end
 
     assert_redirected_to admission_url(Admission.last)
@@ -34,7 +34,7 @@ class AdmissionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update admission" do
-    patch admission_url(@admission), params: { admission: { admissionDate: @admission.admissionDate, appointment_id: @admission.appointment_id, dischargeDate: @admission.dischargeDate, roomNumber: @admission.roomNumber, roomType: @admission.roomType, user_id: @admission.user_id } }
+    patch admission_url(@admission), params: { admission: { admissionDate: @admission.admissionDate, appointment_id: @admission.appointment_id, dischargeDate: @admission.dischargeDate, user_id: @admission.user_id, ward_id: @admission.ward_id } }
     assert_redirected_to admission_url(@admission)
   end
 

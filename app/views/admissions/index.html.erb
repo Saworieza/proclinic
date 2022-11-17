@@ -1,45 +1,35 @@
-<%= render 'admissions/common' %>
+<p id="notice"><%= notice %></p>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="widget-area-2 proclinic-box-shadow">
-        <h3 class="widget-title">Admissions List</h3>
-        <div class="table-responsive mb-3">
-          <table id="tableId" class="table table-bordered table-striped">
-            <thead>
-              <tr>
-                <th>Room</th>
-                <th>Room Type</th>
-                <th>Patient</th>
-                <th>Adm Date</th>
-                <th>Discharge Date</th>
-                <th>Doctor</th>
-                <th>Discharged</th>
-              </tr>
-            </thead>
-            <tbody>
-            <% @admissions.each do |admission| %>
-              <tr>
-                <td><%= admission.roomNumber %></td>
-                <td><%= admission.roomType %></td>
-                <td><%= admission.appointment.patient.surname %> <%= admission.appointment.patient.othernames %></td>
-                <td><%= admission.admissionDate.strftime('%D %b %Y') %></td>
-                <td><%= admission.dischargeDate.strftime('%D %b %Y') %></td>
-                <td>Dr. <%= admission.appointment.doctor.surname %> <%= admission.appointment.doctor.othernames %></td>
-                <% if admission.discharged == true %>
-                  <td><span class="badge badge-success"><%= humanize_admision(admission.discharged)  %></span></td>
-                <% else %>
-                  <td><span class="badge badge-danger"><%= humanize_admision(admission.discharged) %></span></td>
-                <% end %>
+<h1>Admissions</h1>
 
-                <td><%= link_to 'Show', admission %></td
-              </tr>
-            <% end %>
-            </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<table>
+  <thead>
+    <tr>
+      <th>Ward</th>
+      <th>Admissiondate</th>
+      <th>Dischargedate</th>
+      <th>Appointment</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admissions.each do |admission| %>
+      <tr>
+        <td><%= admission.ward %></td>
+        <td><%= admission.admissionDate %></td>
+        <td><%= admission.dischargeDate %></td>
+        <td><%= admission.appointment %></td>
+        <td><%= admission.user %></td>
+        <td><%= link_to 'Show', admission %></td>
+        <td><%= link_to 'Edit', edit_admission_path(admission) %></td>
+        <td><%= link_to 'Destroy', admission, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Admission', new_admission_path %>
