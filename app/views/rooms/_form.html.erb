@@ -11,9 +11,9 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :ward_id %>
-    <%= f.text_field :ward_id %>
+  <div class="form-group col-md-6">
+    <label for="ward-head">Ward Head</label>
+    <%= f.collection_select :ward_id, Ward.all, :id, :name, {}, {class: "form-control"} %>
   </div>
 
   <div class="field">
@@ -22,13 +22,18 @@
   </div>
 
   <div class="field">
-    <%= f.label :availability %>
+  <label for="availability">Occupied ?</label>
     <%= f.check_box :availability %>
   </div>
 
-  <div class="field">
-    <%= f.label :user_id %>
-    <%= f.text_field :user_id %>
+  <h5>New Admission</h5>
+  <div id="admissions">
+      <%= f.fields_for :admissions do |admission| %>
+        <%= render 'admission_fields', f: admission %>
+      <% end %>
+      <span class='links'>
+        <%= link_to_add_association 'Admit New Patient', f, :admissions %>
+      </span>
   </div>
 
   <div class="actions">

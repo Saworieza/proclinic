@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
   before_action :set_room, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /rooms or /rooms.json
   def index
@@ -22,6 +23,8 @@ class RoomsController < ApplicationController
   # POST /rooms or /rooms.json
   def create
     @room = Room.new(room_params)
+    @room.user = current_user
+
 
     respond_to do |format|
       if @room.save
@@ -65,6 +68,6 @@ class RoomsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def room_params
-      params.require(:room).permit(:ward_id, :number, :availability, :user_id)
+      params.require(:room).permit(:ward_id, :number, :availability, :user_id, admissions_attributes: [:id, :admissionDate, :dischargeDate, :appointment_id, :_destroy])
     end
 end

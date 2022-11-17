@@ -11,19 +11,14 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group col-md-6">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "form-control", placeholder: "Ward Name" %>
   </div>
 
-  <div class="field">
-    <%= f.label :doctor_id %>
-    <%= f.text_field :doctor_id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :user_id %>
-    <%= f.text_field :user_id %>
+  <div class="form-group col-md-6">
+    <label for="ward-head">Ward Head</label>
+    <%= f.collection_select :doctor_id, Doctor.all, :id, :othernames, {}, {class: "form-control"} %>
   </div>
 
   <div class="actions">

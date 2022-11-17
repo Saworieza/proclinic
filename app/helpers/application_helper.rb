@@ -42,4 +42,16 @@ module ApplicationHelper
     end
   end
 
+  def humanize_availability(value)
+    case value
+    when true
+      "Occupied"
+    when false
+      "Available"
+    when nil
+      "Undefined"
+    else
+      "Invalid"
+    end
+  end
 end

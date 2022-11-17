@@ -1,14 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  ward: one
+  room: one
   admissionDate: 2022-11-17
   dischargeDate: 2022-11-17
   appointment: one
   user: one
 
 two:
-  ward: two
+  room: two
   admissionDate: 2022-11-17
   dischargeDate: 2022-11-17
   appointment: two

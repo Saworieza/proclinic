@@ -1,24 +1,71 @@
-<p id="notice"><%= notice %></p>
+<%= render 'rooms/common' %>
+<div class="container">
+  <div class="row">
+    <!-- Widget Item -->
+    <div class="col-md-6">
+      <div class="widget-area-2 proclinic-box-shadow">
+        <h3 class="widget-title">Room Details</h3>
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <td><strong>Ward Name</strong></td>
+                <td><%= @room.ward.name %></td>
+              </tr>
+              <tr>
+                <td><strong>Room Number</strong> </td>
+                <td><%= @room.ward.name %> / <%= @room.number %> / <%= Time.now.year %></td>
+              </tr>
+              <tr>
+                <td><strong>Status</strong></td>
+                <td><%= humanize_admision(@room.availability) %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-<p>
-  <strong>Ward:</strong>
-  <%= @room.ward %>
-</p>
+        <%= link_to edit_room_path(@room), class: "btn btn-success mb-3" do %>
+          <span class="ti-pencil-alt"></span>
+          Edit Room
+        <% end %>
 
-<p>
-  <strong>Number:</strong>
-  <%= @room.number %>
-</p>
+        <%= link_to @room, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger mb-3" do %>
+          <span class="ti-trash"></span>
+          Delete Room
+        <% end %>
+      </div>
+    </div>
 
-<p>
-  <strong>Availability:</strong>
-  <%= @room.availability %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @room.user %>
-</p>
-
-<%= link_to 'Edit', edit_room_path(@room) %> |
-<%= link_to 'Back', rooms_path %>
+    <div class="col-md-6">
+      <div class="widget-area-2 proclinic-box-shadow">
+        <h3 class="widget-title"><%= @room.ward.name %> / <%= @room.number %> / <%= Time.now.year %> Admissions </h3>
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Appointment NO</th>
+                <th>Doctor</th>
+                <th>Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @room.admissions.each do |admission| %>
+              <tr>
+                <td>CASE/<%= admission.appointment.id %>/<%= Time.now.strftime("%Y") %></td>
+                <td>Dr. <%= admission.appointment.doctor.surname %> <%= admission.appointment.doctor.othernames %></td>
+                <td><%= admission.appointment.created_at.strftime('%b %d, %Y') %></td>
+                <% if admission.room.availability == true %>
+                  <td><span class="badge badge-success"><%= humanize_availability(admission.room.availability) %></span></td>
+                  <% else %>
+                  <td><span class="badge badge-danger"><%= humanize_availability(admission.room.availability) %></span></td>
+                <% end %>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

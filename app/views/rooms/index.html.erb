@@ -1,33 +1,42 @@
-<p id="notice"><%= notice %></p>
+<%= render 'rooms/common' %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="widget-area-2 proclinic-box-shadow">
+        <h3 class="widget-title">Rooms List</h3>
+        <div class="table-responsive mb-3">
+          <table id="tableId" class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Ward</th>
+                <th>Room Number</th>
+                <th>Ward Head</th>
+                <th>Status</th>
 
-<h1>Rooms</h1>
+              </tr>
+            </thead>
+            <tbody>
+            <% @rooms.each do |room| %>
+              <tr>
+                <td><%= room.ward.name %></td>
+                <td><%= room.ward.name %> / <%= room.number %> / <%= Time.now.year %></td>
+                <td>Dr. <%= room.ward.doctor.surname %> <%= room.ward.doctor.othernames %></td>
+                <% room.admissions.each do |admission| %>
+                  <% if admission.room.availability == true %>
+                    <td><span class="badge badge-success"><%= humanize_availability(admission.room.availability) %></span></td>
+                  <% else %>
+                    <td><span class="badge badge-danger"><%= humanize_availability(admission.room.availability) %></span></td>
+                  <% end %>
+                <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Ward</th>
-      <th>Number</th>
-      <th>Availability</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @rooms.each do |room| %>
-      <tr>
-        <td><%= room.ward %></td>
-        <td><%= room.number %></td>
-        <td><%= room.availability %></td>
-        <td><%= room.user %></td>
-        <td><%= link_to 'Show', room %></td>
-        <td><%= link_to 'Edit', edit_room_path(room) %></td>
-        <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Room', new_room_path %>
+                <td><%= link_to 'Show', room %></td
+              </tr>
+            <% end %>
+            </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

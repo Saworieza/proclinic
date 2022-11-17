@@ -1,5 +1,6 @@
 class WardsController < ApplicationController
   before_action :set_ward, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /wards or /wards.json
   def index
@@ -22,6 +23,7 @@ class WardsController < ApplicationController
   # POST /wards or /wards.json
   def create
     @ward = Ward.new(ward_params)
+    @ward.user = current_user
 
     respond_to do |format|
       if @ward.save

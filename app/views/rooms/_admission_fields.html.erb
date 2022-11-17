@@ -1,0 +1,28 @@
+<div class="nested-fields row">
+  <div class="row form-row">
+    <div class="form-group col-md-2">
+      <label for="patient-name">Appointment </label>
+      <%= f.collection_select :appointment_id, Appointment.all, :id, :token, {}, {class: "form-control"} %>
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="patient-name">Room Number</label>
+      <%= f.collection_select :room_id, Room.all, :id, :number, {}, {class: "form-control"} %>
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="patient-name">Admission Date</label>
+      <%= f.date_select :admissionDate %>
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="patient-name">dischargeDate Date</label>
+      <%= f.date_select :dischargeDate %>
+    </div>
+
+  </div>
+
+  <div class="form-group col-md-3">
+    <%= link_to_remove_association "Remove Patient", f, class: "btn btn-primary btn-lg" %>
+  </div>
+</div>

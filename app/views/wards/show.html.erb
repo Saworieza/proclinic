@@ -7,13 +7,10 @@
 
 <p>
   <strong>Doctor:</strong>
-  <%= @ward.doctor %>
+  DR. <%= @ward.doctor.surname %> <%= @ward.doctor.othernames %>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @ward.user %>
-</p>
 
 <%= link_to 'Edit', edit_ward_path(@ward) %> |
 <%= link_to 'Back', wards_path %>
+<%= link_to 'Destroy', @ward, method: :delete, data: { confirm: 'Are you sure?' } %>

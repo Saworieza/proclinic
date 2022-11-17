@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20221117103720) do
+ActiveRecord::Schema.define(version: 20221117113207) do
 
   create_table "admissions", force: :cascade do |t|
-    t.integer  "ward_id"
+    t.integer  "room_id"
     t.date     "admissionDate"
     t.date     "dischargeDate"
     t.integer  "appointment_id"
@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 20221117103720) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.index ["appointment_id"], name: "index_admissions_on_appointment_id"
+    t.index ["room_id"], name: "index_admissions_on_room_id"
     t.index ["user_id"], name: "index_admissions_on_user_id"
-    t.index ["ward_id"], name: "index_admissions_on_ward_id"
   end
 
   create_table "appointments", force: :cascade do |t|
