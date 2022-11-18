@@ -11,7 +11,7 @@
                 <th>Ward</th>
                 <th>Room Number</th>
                 <th>Ward Head</th>
-                <th>Status</th>
+                <th>Admissions</th>
 
               </tr>
             </thead>
@@ -21,14 +21,7 @@
                 <td><%= room.ward.name %></td>
                 <td><%= room.ward.name %> / <%= room.number %> / <%= Time.now.year %></td>
                 <td>Dr. <%= room.ward.doctor.surname %> <%= room.ward.doctor.othernames %></td>
-                <% room.admissions.each do |admission| %>
-                  <% if admission.room.availability == true %>
-                    <td><span class="badge badge-success"><%= humanize_availability(admission.room.availability) %></span></td>
-                  <% else %>
-                    <td><span class="badge badge-danger"><%= humanize_availability(admission.room.availability) %></span></td>
-                  <% end %>
-                <% end %>
-
+                <td><%= room.admissions.count %></td>
                 <td><%= link_to 'Show', room %></td
               </tr>
             <% end %>
