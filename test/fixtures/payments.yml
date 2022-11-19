@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  appointment: one
+  admission: one
+  amount: 1
+  paymentType: MyString
+  user: one
+
+two:
+  appointment: two
+  admission: two
+  amount: 1
+  paymentType: MyString
+  user: two
