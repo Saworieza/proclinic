@@ -15,12 +15,12 @@
                 <td>CASE/<%= @diagnosis.appointment.id %>/<%= Time.now.strftime("%Y") %></td>
               </tr>
               <tr>
-                <td><strong>Doctor</strong></td>
-                <td>Dr. <%= @diagnosis.appointment.doctor.surname %> <%= @diagnosis.appointment.doctor.othernames %></td>
-              </tr>
-              <tr>
                 <td><strong>Patient</strong> </td>
                 <td><%= @diagnosis.appointment.patient.surname %> <%= @diagnosis.appointment.patient.othernames %></td>
+              </tr>
+              <tr>
+                <td><strong>Doctor</strong></td>
+                <td>Dr. <%= @diagnosis.appointment.doctor.surname %> <%= @diagnosis.appointment.doctor.othernames %></td>
               </tr>
               <tr>
                 <td><strong>Patient Age</strong> </td>

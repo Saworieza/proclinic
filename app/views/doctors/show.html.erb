@@ -73,82 +73,26 @@
                   <table class="table table-bordered table-striped">
                       <thead>
                           <tr>
-                              <th>Patient Name</th>
-                              <th>Injury/Condition</th>
-                              <th>Visit Date</th>
-                              <th>Status</th>
+                            <th>Appointment ID</th>
+                            <th>Patient Name</th>
+                            <th>Visit Date</th>
+                            <th>Status</th>
                           </tr>
                       </thead>
                       <tbody>
-                          <tr>
-                              <td>Manoj Kumar</td>
-                              <td>Viral fever</td>
-                              <td>12-03-2018</td>
-                              <td>Condition is good</td>
+                        <% @doctor.appointments.each do |appointment| %>
+                            <td>CASE/<%= appointment.id %>/<%= Time.now.strftime("%Y") %></td>
+                            <td>Dr. <%= appointment.patient.surname %> <%= appointment.patient.othernames %></td>
+                            <td><%= appointment.created_at.strftime('%b %d, %Y') %></td>
+                            <% if appointment.diagnosed == true %>
+                              <td><span class="badge badge-success"><%= link_to humanize_appointment(appointment.diagnosed), appointment_path(appointment)  %></span></td>
+                            <% else %>
+                              <td><span class="badge badge-danger"><%= link_to humanize_appointment(appointment.diagnosed), appointment_path(appointment) %></span></td>
+                            <% end %>
                           </tr>
-                          <tr>
-                              <td>Riya </td>
-                              <td>Hand Fracture</td>
-                              <td>12-10-2018</td>
-                              <td>Small Operation</td>
-                          </tr>
-                          <tr>
-                              <td>Paul</td>
-                              <td>Dengue</td>
-                              <td>15-10-2018</td>
-                              <td>Admintted in Generalward</td>
-                          </tr>
-                          <tr>
-                              <td>Manoj Kumar</td>
-                              <td>Malayria</td>
-                              <td>12-03-2018</td>
-                              <td>Condition is good</td>
-                          </tr>
-                          <tr>
-                              <td>Manoj Kumar</td>
-                              <td>Viral fever</td>
-                              <td>12-03-2018</td>
-                              <td>Condition is good</td>
-                          </tr>
-                          <tr>
-                              <td>Riya </td>
-                              <td>Hand Fracture</td>
-                              <td>12-10-2018</td>
-                              <td>Small Operation</td>
-                          </tr>
-                          <tr>
-                              <td>Paul</td>
-                              <td>Dengue</td>
-                              <td>15-10-2018</td>
-                              <td>Admintted in Generalward</td>
-                          </tr>
-                          <tr>
-                              <td>Manoj Kumar</td>
-                              <td>Malayria</td>
-                              <td>12-03-2018</td>
-                              <td>Condition is good</td>
-                          </tr>
+                        <% end %>
                       </tbody>
                   </table>
-
-                  <!--Export links-->
-                  <nav aria-label="Page navigation example">
-                      <ul class="pagination justify-content-center export-pagination">
-                          <li class="page-item">
-                              <a class="page-link" href="about-doctor.html#"><span class="ti-download"></span> csv</a>
-                          </li>
-                          <li class="page-item">
-                              <a class="page-link" href="about-doctor.html#"><span class="ti-printer"></span> print</a>
-                          </li>
-                          <li class="page-item">
-                              <a class="page-link" href="about-doctor.html#"><span class="ti-file"></span> PDF</a>
-                          </li>
-                          <li class="page-item">
-                              <a class="page-link" href="about-doctor.html#"><span class="ti-align-justify"></span> Excel</a>
-                          </li>
-                      </ul>
-                  </nav>
-                  <!-- /Export links-->
               </div>
           </div>
       </div>

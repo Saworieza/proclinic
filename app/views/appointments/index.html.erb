@@ -18,7 +18,7 @@
                 <th>Date</th>
                 <th>Time Slot</th>
                 <th>Issue</th>
-                <th>Diagnosed</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody>
@@ -32,10 +32,11 @@
                 <td><%= appointment.date %></td>
                 <td><%= appointment.timeSlot %></td>
                 <td><%= appointment.problem.truncate(30) %></td>
-                <td><%= appointment.diagnosed %></td>
-                <td>
-                  <span class="badge badge-success">Completed</span>
-                </td>
+                <% if appointment.diagnosed == true %>
+                  <td><span class="badge badge-success"><%= link_to humanize_appointment(appointment.diagnosed), appointment_path(appointment)  %></span></td>
+                <% else %>
+                  <td><span class="badge badge-danger"><%= link_to humanize_appointment(appointment.diagnosed), appointment_path(appointment) %></span></td>
+                <% end %>
               </tr>
               <% end %>
             </tbody>

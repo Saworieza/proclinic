@@ -38,8 +38,12 @@
                     <td><%= @appointment.problem %></td>
                 </tr>
                 <tr>
-                    <td><strong>Diagnosed</strong></td>
-                    <td><%= @appointment.diagnosed %></td>
+                    <td><strong>Status</strong></td>
+                    <% if @appointment.diagnosed == true %>
+                      <td><span class="badge badge-success"><%= link_to humanize_appointment(@appointment.diagnosed), appointment_path(@appointment)  %></span></td>
+                    <% else %>
+                      <td><span class="badge badge-danger"><%= link_to humanize_appointment(@appointment.diagnosed), appointment_path(@appointment) %></span></td>
+                    <% end %>
                 </tr>
               </tbody>
             </table>
