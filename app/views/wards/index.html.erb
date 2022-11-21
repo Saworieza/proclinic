@@ -1,26 +1,30 @@
-<p id="notice"><%= notice %></p>
+<%= render 'wards/common' %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="widget-area-2 proclinic-box-shadow">
+        <h3 class="widget-title">Wards List</h3>
+        <div class="table-responsive mb-3">
+          <table id="tableId" class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Doctor in Charge</th>
+              </tr>
+            </thead>
 
-<h1>Wards</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Doctor</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @wards.each do |ward| %>
-      <tr>
-        <td><%= link_to ward.name, ward %></td>
-        <td><%= ward.doctor.surname %> <%= ward.doctor.othernames %>></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Ward', new_ward_path %>
+            <tbody>
+              <% @wards.each do |ward| %>
+                <tr>
+                  <td><%= link_to ward.name, ward %></td>
+                  <td><%= ward.doctor.surname %> <%= ward.doctor.othernames %></td>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

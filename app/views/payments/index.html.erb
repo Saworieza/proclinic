@@ -1,35 +1,42 @@
-<p id="notice"><%= notice %></p>
+<%= render 'payments/common' %>
 
-<h1>Payments</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="widget-area-2 proclinic-box-shadow">
+        <h3 class="widget-title">Payments List</h3>
+        <div class="table-responsive mb-3">
+          <table id="tableId" class="table table-bordered table-striped">
+            <thead>
+              <tr>
+              <th>Appointment</th>
+              <th>Patient Name</th>
+              <th>Doctor Name</th>
+              <th>Service</th>
+              <th>Charges</th>
+              <th>Payment Type</th>
+              <th>status</th>
+              <th colspan="1"></th>
+            </tr>
+          </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Appointment</th>
-      <th>Admission</th>
-      <th>Amount</th>
-      <th>Paymenttype</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @payments.each do |payment| %>
-      <tr>
-        <td><%= payment.appointment %></td>
-        <td><%= payment.admission %></td>
-        <td><%= payment.amount %></td>
-        <td><%= payment.paymentType %></td>
-        <td><%= payment.user %></td>
-        <td><%= link_to 'Show', payment %></td>
-        <td><%= link_to 'Edit', edit_payment_path(payment) %></td>
-        <td><%= link_to 'Destroy', payment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Payment', new_payment_path %>
+          <tbody>
+            <% @payments.each do |payment| %>
+              <tr>
+                <td>CASE/<%= payment.appointment.id %>/<%= Time.now.strftime("%Y") %></td>
+                <td><%= payment.appointment.patient.surname %> <%= payment.appointment.patient.othernames %></td>
+                <td>Dr. <%= payment.appointment.doctor.surname %> <%= payment.appointment.doctor.othernames %></td>
+                <td><%= payment.appointment.department.name %></td>
+                <td><%= payment.amount %></td>
+                <td><%= payment.paymentType %></td>
+                <td><span class="badge badge-success">completed</span> </td>
+                <td><%= link_to 'Show', payment %></td>
+              </tr>
+            <% end %>
+            </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

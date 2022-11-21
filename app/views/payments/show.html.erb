@@ -1,29 +1,54 @@
-<p id="notice"><%= notice %></p>
+<%= render 'payments/common' %>
+<div class="container">
+  <div class="row">
+    <!-- Widget Item -->
+    <div class="col-md-12">
+      <div class="widget-area-2 proclinic-box-shadow">
+        <h3 class="widget-title">Payment Details</h3>
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <tbody>
+            <tr>
+              <td><strong>Appointment</strong></td>
+              <td>CASE/<%= @payment.appointment.id %>/<%= Time.now.strftime("%Y") %></td>
+            </tr>
+            <tr>
+              <td><strong>Patient</strong></td>
+              <td><%= @payment.appointment.patient.surname %> <%= @payment.appointment.patient.othernames %></td>
+            </tr>
+            <tr>
+              <td><strong>Doctor</strong></td>
+              <td>Dr. <%= @payment.appointment.doctor.surname %> <%= @payment.appointment.doctor.othernames %></td>
+            </tr>
+            <tr>
+              <td><strong>Amount</strong></td>
+              <td><%= @payment.amount %></td>
+            </tr>
 
-<p>
-  <strong>Appointment:</strong>
-  <%= @payment.appointment %>
-</p>
+            <tr>
+              <td><strong>Payment Type:</strong><td>
+              <%= @payment.paymentType %>
+            </tr>
 
-<p>
-  <strong>Admission:</strong>
-  <%= @payment.admission %>
-</p>
+            <tr>
+              <td><strong>Payment Date:</strong><td>
+              <%= @payment.created_at.strftime('%d %b %Y') %>
+            </tr>
 
-<p>
-  <strong>Amount:</strong>
-  <%= @payment.amount %>
-</p>
+            </tbody>
+          </table>
+        </div>
 
-<p>
-  <strong>Paymenttype:</strong>
-  <%= @payment.paymentType %>
-</p>
+        <%= link_to edit_payment_path(@payment), class: "btn btn-success mb-3" do %>
+          <span class="ti-pencil-alt"></span>
+          Edit Payment
+        <% end %>
 
-<p>
-  <strong>User:</strong>
-  <%= @payment.user %>
-</p>
-
-<%= link_to 'Edit', edit_payment_path(@payment) %> |
-<%= link_to 'Back', payments_path %>
+        <%= link_to @payment, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger mb-3" do %>
+          <span class="ti-trash"></span>
+          Delete Payment
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,16 +1,34 @@
-<p id="notice"><%= notice %></p>
+<%= render 'wards/common' %>
+<div class="container">
+  <div class="row">
+    <!-- Widget Item -->
+    <div class="col-md-6">
+      <div class="widget-area-2 proclinic-box-shadow">
+        <h3 class="widget-title">Room Details</h3>
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <td><strong>Ward Name</strong></td>
+                <td><%= @ward.name %></td>
+              </tr>
+              <tr>
+                <td><strong>Doctor In Charge</strong></td>
+                <td>DR. <%= @ward.doctor.surname %> <%= @ward.doctor.othernames %></td>
+              </tr>
 
-<p>
-  <strong>Name:</strong>
-  <%= @ward.name %>
-</p>
+              </tbody>
+              </table>
+            </div>
 
-<p>
-  <strong>Doctor:</strong>
-  DR. <%= @ward.doctor.surname %> <%= @ward.doctor.othernames %>
-</p>
+            <%= link_to edit_ward_path(@ward), class: "btn btn-success mb-3" do %>
+              <span class="ti-pencil-alt"></span>
+              Edit Ward
+            <% end %>
 
-
-<%= link_to 'Edit', edit_ward_path(@ward) %> |
-<%= link_to 'Back', wards_path %>
-<%= link_to 'Destroy', @ward, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to @ward, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger mb-3" do %>
+              <span class="ti-trash"></span>
+              Delete Ward
+            <% end %>
+          </div>
+        </div>

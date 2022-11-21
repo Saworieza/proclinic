@@ -52,13 +52,13 @@
               <%= f.text_field :idNo, class: "form-control", placeholder: "Id Number" %>
             </div>
 
-            <h5>Next Of Kin</h5>
+            <h5 class="widget-title">Next Of Kin</h5>
             <div id="kins">
                 <%= f.fields_for :kins do |kin| %>
                   <%= render 'kin_fields', f: kin %>
                 <% end %>
                 <span class='links'>
-                  <%= link_to_add_association 'Add Next Of Kin', f, :kins %>
+                  <%= link_to_add_association 'Add Next Of Kin', f, :kins, class: "btn btn-info btn-sm" %>
                 </span>
             </div>
 

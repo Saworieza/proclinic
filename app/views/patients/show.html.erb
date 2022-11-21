@@ -97,71 +97,25 @@
           <table class="table table-bordered table-striped">
             <thead>
               <tr>
+                <th>Payment ID</th>
                 <th>Date</th>
                 <th>Cost</th>
-                <th>Discount</th>
                 <th>Payment Type</th>
-                <th>Invoive</th>
                 <th>Status</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>12-03-2018</td>
-                <td>$300</td>
-                <td>15%</td>
-                <td>Check</td>
-                <td><button type="button" class="btn btn-outline-info mb-0"><span class="ti-arrow-down"></span> Invoice</button></td>
-                <td><span class="badge badge-warning">Pending</span></td>
-                                  </tr>
-                                  <tr>
-                <td>12-03-2018</td>
-                <td>$130</td>
-                <td>5%</td>
-                <td>Credit Card</td>
-                <td><button type="button" class="btn btn-outline-info mb-0"><span class="ti-arrow-down"></span> Invoice</button></td>
-                <td><span class="badge badge-success">Completed</span></td>
-                                  </tr>
-                                  <tr>
-                <td>12-03-2018</td>
-                <td>$30</td>
-                <td>5%</td>
-                <td>Credit Card</td>
-                <td><button type="button" class="btn btn-outline-info mb-0"><span class="ti-arrow-down"></span> Invoice</button></td>
-                <td><span class="badge badge-danger">Cancelled</span></td>
-                                  </tr>
-                                  <tr>
-                <td>12-03-2018</td>
-                <td>$30</td>
-                <td>5%</td>
-                <td>Cash</td>
-                <td><button type="button" class="btn btn-outline-info mb-0"><span class="ti-arrow-down"></span> Invoice</button></td>
-                <td><span class="badge badge-success">Completed</span></td>
-                                  </tr>
-                                  <tr>
-                <td>12-03-2018</td>
-                <td>$30</td>
-                <td>5%</td>
-                <td>Credit Card</td>
-                <td><button type="button" class="btn btn-outline-info mb-0"><span class="ti-arrow-down"></span> Invoice</button></td>
-                <td><span class="badge badge-success">Completed</span></td>
-                                  </tr>
-                                  <tr>
-                <td>12-03-2018</td>
-                <td>$30</td>
-                <td>5%</td>
-                <td>Insurance</td>
-                <td><button type="button" class="btn btn-outline-info mb-0"><span class="ti-arrow-down"></span> Invoice</button></td>
-                <td><span class="badge badge-success">Completed</span></td>
-                                  </tr>
-                                  <tr>
-                <td>12-03-2018</td>
-                <td>$30</td>
-                <td>5%</td>
-                <td>Credit Card</td>
-                <td><button type="button" class="btn btn-outline-info mb-0"><span class="ti-arrow-down"></span> Invoice</button></td>
-                <td><span class="badge badge-success">Completed</span></td>
-              </tr>
+            <% @patient.appointments.each do |appointment| %>
+              <% appointment.payments.each do |payment| %>
+                <tr>
+                  <td><%= payment.id %>/<%= Time.now.strftime("%Y") %> </td>
+                  <td><%= payment.created_at.strftime('%d %b %Y') %></td>
+                  <td><%= payment.amount %></td>
+                  <td><%= payment.paymentType %></td>
+                  <td><span class="badge badge-success">Completed</span></td>
+                </tr>
+              <% end %>
+            <% end %>
             </tbody>
           </table>
 

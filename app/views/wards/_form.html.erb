@@ -1,27 +1,37 @@
-<%= form_for(ward) do |f| %>
-  <% if ward.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(ward.errors.count, "error") %> prohibited this ward from being saved:</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="widget-area-2 proclinic-box-shadow">
+        <h3 class="widget-title">Add Patient</h3>
+        <%= form_for(ward) do |f| %>
+          <% if ward.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(ward.errors.count, "error") %> prohibited this ward from being saved:</h2>
 
-      <ul>
-      <% ward.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+              <ul>
+              <% ward.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <div class="row form-row">
+            <div class="form-group col-md-6">
+              <%= f.label :name %>
+              <%= f.text_field :name, class: "form-control", placeholder: "Ward Name" %>
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="ward-head">Ward Head</label>
+              <%= f.collection_select :doctor_id, Doctor.all, :id, :othernames, {}, {class: "form-control"} %>
+            </div>
+
+            <div class="form-group col-md-12 mb-3">
+              <%= f.submit class: "btn btn-primary btn-lg"  %>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="form-group col-md-6">
-    <%= f.label :name %>
-    <%= f.text_field :name, class: "form-control", placeholder: "Ward Name" %>
   </div>
-
-  <div class="form-group col-md-6">
-    <label for="ward-head">Ward Head</label>
-    <%= f.collection_select :doctor_id, Doctor.all, :id, :othernames, {}, {class: "form-control"} %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
