@@ -50,16 +50,16 @@
     <!-- Widget Item -->
     <div class="col-md-6">
       <div class="widget-area-2 proclinic-box-shadow">
-        <h3 class="widget-title">Appointments Year by Year</h3>
-        <div id="lineMorris" class="chart-home"></div>
+        <h3 class="widget-title">Appointments Day by Day</h3>
+        <div><%= line_chart Appointment.group_by_day_of_week(:created_at, format: "%a").count %></div>
       </div>
     </div>
     <!-- /Widget Item -->
     <!-- Widget Item -->
     <div class="col-md-6">
       <div class="widget-area-2 proclinic-box-shadow">
-        <h3 class="widget-title"> Patients Year by Year</h3>
-        <div id="barMorris" class="chart-home"></div>
+        <h3 class="widget-title"> Patients Day by Day</h3>
+        <div><%= column_chart Patient.group_by_day_of_week(:created_at, format: "%a").count %></div>
       </div>
     </div>
     <!-- /Widget Item -->
@@ -116,7 +116,7 @@
     <div class="col-sm-6">
       <div class="widget-area-2 proclinic-box-shadow">
         <h3 class="widget-title">Appointments Status</h3>
-        <div id="donutMorris" class="chart-home"></div>
+        <div><%= pie_chart Appointment.group(:diagnosed).count %></div>
       </div>
     </div>
     <!-- /Widget Item -->

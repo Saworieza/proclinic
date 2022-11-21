@@ -15,6 +15,8 @@
 //= require jquery_ujs
 //= require popper
 //= require cocoon
+//= require chartkick
+//= require Chart.bundle
 //= require turbolinks
 //= require_tree .
 
