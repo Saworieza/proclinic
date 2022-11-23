@@ -1,0 +1,32 @@
+<%= form_for(lab) do |f| %>
+  <% if lab.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(lab.errors.count, "error") %> prohibited this lab from being saved:</h2>
+
+      <ul>
+      <% lab.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :testName %>
+    <%= f.text_field :testName %>
+  </div>
+
+  <div class="field">
+    <%= f.label :result %>
+    <%= f.text_area :result %>
+  </div>
+
+  <div class="field">
+    <%= f.label :appointment_id %>
+    <%= f.collection_select :appointment_id, Appointment.all, :id, :token %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
