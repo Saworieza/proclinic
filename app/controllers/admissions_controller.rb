@@ -1,5 +1,6 @@
 class AdmissionsController < ApplicationController
   before_action :set_admission, only: %i[ show edit update destroy ]
+  load_and_authorize_resource
 
   # GET /admissions or /admissions.json
   def index

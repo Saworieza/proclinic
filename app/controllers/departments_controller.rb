@@ -1,6 +1,7 @@
 class DepartmentsController < ApplicationController
   before_action :set_department, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
+  load_and_authorize_resource
 
   # GET /departments or /departments.json
   def index
@@ -14,7 +15,6 @@ class DepartmentsController < ApplicationController
   # GET /departments/new
   def new
     @department = Department.new
-    @department.user = current_user
   end
 
   # GET /departments/1/edit
@@ -24,6 +24,7 @@ class DepartmentsController < ApplicationController
   # POST /departments or /departments.json
   def create
     @department = Department.new(department_params)
+    @department.user = current_user
 
     respond_to do |format|
       if @department.save
