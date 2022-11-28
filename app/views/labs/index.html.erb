@@ -1,33 +1,40 @@
+<%= render 'labs/common' %>
+
 <p id="notice"><%= notice %></p>
 
-<h1>Labs</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="widget-area-2 proclinic-box-shadow">
+        <h3 class="widget-title">Lab Tests</h3>
+        <div class="table-responsive mb-3">
+          <table id="tableId" class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Testname</th>
+                <th>Result</th>
+                <th>Doctor</th>
+                <th>Patient</th>
+                <th colspan="3"></th>
+              </tr>
+            </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Testname</th>
-      <th>Result</th>
-      <th>Appointment</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+            <tbody>
+              <% @labs.each do |lab| %>
+                <tr>
+                  <td><%= lab.testName %></td>
+                  <td><%= lab.result %></td>
+                  <td>Dr. <%= lab.appointment.doctor.surname %> <%= lab.appointment.doctor.othernames %></td>
+                  <td><%= lab.appointment.patient.surname %> <%= lab.appointment.patient.othernames %></td>
+                  <td><%= link_to 'Show Test', lab %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <tbody>
-    <% @labs.each do |lab| %>
-      <tr>
-        <td><%= lab.testName %></td>
-        <td><%= lab.result %></td>
-        <td><%= lab.appointment.patient.surname %></td>
-        <td><%= lab.user.id %></td>
-        <td><%= link_to 'Show', lab %></td>
-        <td><%= link_to 'Edit', edit_lab_path(lab) %></td>
-        <td><%= link_to 'Destroy', lab, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
-
-<%= link_to 'New Lab', new_lab_path %>

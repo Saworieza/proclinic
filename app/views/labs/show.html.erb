@@ -1,24 +1,42 @@
-<p id="notice"><%= notice %></p>
+<%= render 'labs/common' %>
 
-<p>
-  <strong>Testname:</strong>
-  <%= @lab.testName %>
-</p>
+<div class="container">
+  <div class="row">
+    <!-- Widget Item -->
+    <div class="col-md-6">
+      <div class="widget-area-2 proclinic-box-shadow">
+        <h3 class="widget-title">Patient Details</h3>
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <td><strong>Test Name</strong></td>
+                <td><%= @lab.testName %></td>
+              </tr>
 
-<p>
-  <strong>Result:</strong>
-  <%= @lab.result %>
-</p>
+              <tr>
+                <td><strong>Result</strong></td>
+                <td><%= @lab.result %></td>
+              </tr>
 
-<p>
-  <strong>Appointment:</strong>
-  <%= @lab.appointment.patient.surname %>
-</p>
 
-<p>
-  <strong>User:</strong>
-  <%= @lab.user.id %>
-</p>
+              <tr>
+                <td><strong>Patient</strong></td>
+                <td><%= @lab.appointment.patient.surname %></td>
+              </tr>
 
-<%= link_to 'Edit', edit_lab_path(@lab) %> |
-<%= link_to 'Back', labs_path %>
+            </tbody>
+          </table>
+        </div>
+
+        <%= link_to edit_lab_path(@lab), class: "btn btn-success mb-3" do %>
+          <span class="ti-pencil-alt"></span>
+          Edit Lab Test
+        <% end %>
+
+        <%= link_to @labs, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger mb-3" do %>
+          <span class="ti-trash"></span>
+          Delete Lab Test
+        <% end %>
+      </div>
+    </div>

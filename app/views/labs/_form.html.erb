@@ -1,32 +1,43 @@
-<%= form_for(lab) do |f| %>
-  <% if lab.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(lab.errors.count, "error") %> prohibited this lab from being saved:</h2>
+<!-- Main Content -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="widget-area-2 proclinic-box-shadow">
+        <h3 class="widget-title">New Test</h3>
+        <%= form_for(lab) do |f| %>
+          <% if lab.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(lab.errors.count, "error") %> prohibited this lab from being saved:</h2>
 
-      <ul>
-      <% lab.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+              <ul>
+              <% lab.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
 
-  <div class="field">
-    <%= f.label :testName %>
-    <%= f.text_field :testName %>
+          <div class="row form-row">
+            <div class="form-group col-md-6">
+              <label for="appointment">Appointment</label>
+              <%= f.collection_select :appointment_id, Appointment.all, :id, :token, {}, class: "form-control" %>
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="testname">Test Name</label>
+              <%= f.text_field :testName, class: "form-control", placeholder: "Test Name" %>
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="result">Result</label>
+              <%= f.text_area :result, class: "form-control", placeholder: "Result" %>
+            </div>
+
+            <div class="form-group col-md-12 mb-3">
+              <%= f.submit class: "btn btn-primary btn-lg" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
   </div>
-
-  <div class="field">
-    <%= f.label :result %>
-    <%= f.text_area :result %>
-  </div>
-
-  <div class="field">
-    <%= f.label :appointment_id %>
-    <%= f.collection_select :appointment_id, Appointment.all, :id, :token %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
