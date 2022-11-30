@@ -10,6 +10,7 @@ class Ability
       can :manage, Diagnosis, user_id: user.id
     elsif user.labtech?
       can :manage, Lab, user_id: user.id
+      can :manage, Diagnosis, user_id: user.id
     elsif user.doc?
       can :manage, Patient, user_id: user.id
       can :manage, Kin, user_id: user.id
@@ -18,6 +19,7 @@ class Ability
       can :manage, Department, user_id: user.id
       can :manage, Admission, user_id: user.id
       can :manage, Ward, user_id: user.id
+      can :manage, Room, user_id: user.id
     elsif user.admin?
       can :manage
     else

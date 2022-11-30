@@ -28,7 +28,7 @@ class DiagnosesController < ApplicationController
 
     respond_to do |format|
       if @diagnosis.save
-        format.html { redirect_to diagnosis_url(@diagnosis), notice: "Diagnosis was successfully created." }
+        format.html { redirect_to diagnosis_url(@diagnosis), notice: "Prescription was successfully made." }
         format.json { render :show, status: :created, location: @diagnosis }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -41,7 +41,7 @@ class DiagnosesController < ApplicationController
   def update
     respond_to do |format|
       if @diagnosis.update(diagnosis_params)
-        format.html { redirect_to diagnosis_url(@diagnosis), notice: "Diagnosis was successfully updated." }
+        format.html { redirect_to diagnosis_url(@diagnosis), notice: "Prescription was successfully updated." }
         format.json { render :show, status: :ok, location: @diagnosis }
       else
         format.html { render :edit, status: :unprocessable_entity }
